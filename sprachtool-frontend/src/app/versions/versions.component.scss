@@ -1,0 +1,82 @@
+.versions-table {
+
+    & .number {
+        width: 2%;
+    }
+
+    & .title {
+        width: 20%;
+    }
+
+    & .description {
+        width: 20%;
+
+        & .description-text {
+            height: 35px;
+            overflow: auto;
+        }
+    }
+
+
+    & .createdAt {
+        width: 15%;
+    }
+
+    & .environment {
+        width: 10%;
+
+        & ul li {
+            list-style: none;
+        }
+
+        & .env-name {
+            display: block;
+            margin-bottom: 5px;
+            border-bottom: 1px solid #ffffff;
+        }
+    }
+
+    & .actions {
+        text-align: right;
+    }
+
+    
+}
+
+.pagination-container {
+    width: 510px;
+    margin: 0 auto;
+}
+
+/deep/ .my-pagination {
+    color: #ffffff;
+
+    .ngx-pagination {
+        margin: 0;
+    }
+
+    .ngx-pagination a,
+    .ngx-pagination button {
+        color: #FF8800;
+        border: 1px solid #FF8800;
+        margin: 0 5px;
+    }
+    
+    .ngx-pagination a:hover,
+    .ngx-pagination button:hover {
+        background-color: #FF8800;
+        text-decoration: none;
+        color: #ffffff;
+    }
+
+    .ngx-pagination .current {
+        padding: 2px 6px;
+        border: 1px solid #FF8800;
+        background-color: #FF8800;
+    }
+    
+    .ngx-pagination .disabled {
+        border: 1px solid #cacaca;
+    }
+
+}

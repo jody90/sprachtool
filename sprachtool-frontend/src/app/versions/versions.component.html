@@ -1,0 +1,83 @@
+<app-version-new></app-version-new>
+
+<div class="table-responsive versions-table">
+
+    <table class="table table-hover">
+        <tr>
+            <th class="number">
+                #
+            </th>
+            <th class="title">
+                Title
+            </th>
+            <th class="description">
+                Description
+            </th>
+            <th class="createdAt">
+                Created at
+            </th>
+            <th class="environment text-center">
+                Target System
+            </th>
+            <!-- <th>
+                Compare Versions
+            </th> -->
+            <th class="text-center">
+                Actions
+            </th>
+        </tr>
+        <tr *ngFor="let version of versions | paginate: { itemsPerPage: 3, currentPage: p }; let i = index">
+            <td class="number">
+                {{versions.length - i}}
+            </td>
+            <td class="title">
+                {{version.title}}
+            </td>
+            <td class="description">
+                <!-- <div class="description-text"> -->
+                <!-- <perfect-scrollbar class="container" [config]="config">
+                    <div class="content">
+                        {{version.description}} {{version.description}} {{version.description}} {{version.description}} {{version.description}} {{version.description}}
+                        {{version.description}}
+                    </div>
+                </perfect-scrollbar> -->
+
+                <!-- </div> -->
+            </td>
+            <td class="createdAt">
+                <app-date-format [timestamp]="version.createdAt"></app-date-format>
+            </td>
+            <td class="environment text-center">
+                <div *ngFor="let entry of version.environment | keys" class="col-xs-6 env-column-container">
+                    <span *ngIf="entry.value.length > 0">
+                        <strong class="env-name">{{entry.key}}</strong>
+                        <ul class="padding-0 env-list">
+                            <li *ngFor="let env of entry.value" class="env-list-item">
+                                {{env}}
+                            </li>
+                        </ul>
+                    </span>
+                </div>
+            </td>
+            <!-- <td>
+                <app-version-compare [versions]="versions" [ownVersion]="version"></app-version-compare>
+            </td> -->
+            <td class="actions">
+                <app-language-select [keys]="version.keys" #language></app-language-select>
+                <button type="button" class="btn btn-primary" (click)="publishVersion(version._id, 'test', language.language)">
+                    Publish on Test
+                </button>
+                <button type="button" class="btn btn-primary" (click)="publishVersion(version._id, 'live', language.language)">
+                    Publish on Live
+                </button>
+            </td>
+        </tr>
+    </table>
+   
+</div>
+
+<div class="pagination-container">
+    <div class="my-pagination-container margin-top-xl">
+        <pagination-controls (pageChange)="p = $event" autoHide="true" previousLabel="previous Page" nextLabel="next Page" maxSize="5" class="my-pagination"></pagination-controls>
+    </div>
+</div>

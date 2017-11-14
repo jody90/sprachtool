@@ -1,0 +1,42 @@
+<div class="key-list-container">
+
+    <div class="form-group margin-top-lg">
+        <div class="input-group">
+            <div class="input-group-addon">
+                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+            </div>
+            <input type="text" class="form-control" placeholder="Key" #keySearchValue (keyup)="0">
+            <span class="input-group-addon" *ngIf="keySearchValue.value" (click)="keySearchValue.value = null">
+                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+            </span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 margin-bottom-md">
+            <strong>
+                Filter missing Translations
+            </strong>
+        </div>
+        <div class="col-xs-12 language-filter-list-container margin-bottom-lg">
+            <button *ngFor="let lang of languages" type="button" [ngClass]="selectedLanguage == lang ? 'active' : ''" class="btn language-filter-btn" (click)="filterLanguage(lang)">
+                {{lang.toUpperCase()}}
+            </button>
+            <button type="button" class="btn language-filter-remove-btn btn-block" (click)="filterLanguage(null)">
+                Remove Filter
+            </button>
+        </div>
+    </div>
+
+    <button class="btn btn-success btn-block margin-bottom-lg" [routerLink]="['new']">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+        Create new language Key
+    </button>
+
+    <ul class="key-list">
+        <app-key-list-item *ngFor="let key of keys | keyFilter : [selectedLanguage, keySearchValue.value] | paginate: { itemsPerPage: 7, currentPage: p }" [key]="key"></app-key-list-item>
+        <div class="my-pagination-container margin-top-xl">
+            <pagination-controls (pageChange)="p = $event" autoHide="true" previousLabel="pervious Page" nextLabel="next Page" maxSize="5" class="my-pagination"></pagination-controls>
+        </div>
+    </ul>
+</div>

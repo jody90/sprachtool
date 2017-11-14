@@ -1,0 +1,15 @@
+@import "src/assets/_helperDistances";
+@import "src/assets/_bootstrapOverride";
+
+// @import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
+
+
+body {
+    background-color: #1D1D1D;
+    font-family: 'Raleway', sans-serif;
+    // background-color: #585a5b;
+    background-image: url("./assets/images/45-degree-fabric-light.png");
+    color: #fff;
+}

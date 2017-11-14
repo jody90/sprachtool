@@ -1,0 +1,24 @@
+@import "src/assets/_variables";
+
+.translation-languages-container {
+
+    background: $container-background;
+    padding: $base-padding;
+
+    & ul li {
+        list-style: none;
+    }
+
+    & .language-list-item {
+        padding: 10px;
+    }
+
+    & .language-remove {
+        color: #D71F1A;
+        cursor: pointer;
+        margin-left: 10px;
+        vertical-align: middle;
+        font-size: 16px;
+    }
+
+}

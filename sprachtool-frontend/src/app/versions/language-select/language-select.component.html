@@ -1,0 +1,6 @@
+<select class="form-control version-select-language" (change)="languageSelect($event.target.value)">
+    <option [value]="languages">All languages</option>
+    <option *ngFor="let language of languages" [value]="language">
+        {{language}}
+    </option>
+</select>

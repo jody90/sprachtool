@@ -1,0 +1,57 @@
+<div class="key-edit-container">
+    <h2 class="margin-0 margin-bottom-lg" *ngIf="keyModel">
+        {{keyModel.key}}
+    </h2>
+    
+    <!-- <app-key-edit-form [keyModel]="keyModel"></app-key-edit-form> -->
+    
+    <form class="key-edit-form" (ngSubmit)="saveKey(form)" #form="ngForm">
+        <div class="row" *ngIf="keyModel">
+            
+            <input type="hidden" name="createdAt" class="form-control" [ngModel]="keyModel.createdAt">
+            <input type="hidden" name="modifiedAt" class="form-control" [ngModel]="keyModel.modifiedAt">
+            
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label for="key">Key</label>
+                    <input type="text" name="key" class="form-control" [(ngModel)]="keyModel.key" (ngModelChange)="trimKey()" required>
+                </div>
+            </div>
+            <div class="col-xs-6" *ngFor="let translation of keyModel.translations; let tIndex = index">
+                <div class="row">
+                    <div class="col-xs-11">
+                        <div class="form-group translation-form-group">
+                            <label for="{{translation.language}}">
+                                Translation {{translation.language}}
+                                <span class="glyphicon glyphicon-trash key-edit-remove-translation" aria-hidden="true" (click)="removeLanguage(translation.language)"></span>
+                                <span class="glyphicon glyphicon-check key-edit-check-translation" aria-hidden="true" *ngIf="needTranslationUpdate(translation.language)" (click)="checkTranslation(translation.language)"></span>
+                            </label>
+                            <textarea rows="3" [name]="translation.language" class="form-control" [ngClass]="needTranslationUpdate(translation.language) ? 'need-update' : ''" [(ngModel)]="translation.value" (keyup)="translationChanged(tIndex)" placeholder="Übersetztung"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6" *ngIf="possibleLanguages.length > 0">
+                <div class="col-xs-3 padding-0 possible-languages-container">
+                    <select class="form-control key-edit-select-language" #languageSelect>
+                        <option *ngFor="let language of possibleLanguages" [value]="language">
+                            {{language}}
+                        </option>
+                    </select>
+                </div>
+                <div class="col-xs-9 padding-0 add-language-btn-container">
+                    <button type="button" class="btn btn-primary btn-block add-language-btn" (click)="addLanguage(languageSelect.value)">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> add Language
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <button type="submit" class="btn btn-success key-edit-save-btn margin-top-lg margin-bottom-lg" [disabled]="!form.valid">
+            <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>
+            Save
+        </button>
+        <div style="clear: both;"></div>
+    </form>
+    
+</div>

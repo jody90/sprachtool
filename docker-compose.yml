@@ -1,0 +1,36 @@
+version: '2'
+services: 
+
+    mongodb:
+        image: mongo:latest
+        container_name: "mongodb"
+        environment:
+          - MONGO_DATA_DIR=/data/db
+          - MONGO_LOG_DIR=/dev/null
+        volumes:
+          - ./mongo-data:/data/db
+        ports:
+            - 27017:27017
+        command: mongod --smallfiles --logpath=/dev/null # --quiet
+        restart: always
+
+    sprachtool-backend:
+        build: sprachtool-backend
+        container_name: "sprachtool-backend"
+        command: npm run-script start:localhost
+        ports:
+            - 5000:5000
+        links:
+            - mongodb
+        depends_on:
+            - mongodb
+        restart: always
+
+    sprachtool-frontend:
+        build: sprachtool-frontend
+        container_name: "sprachtool-frontend"
+        ports:
+            - 4400:80
+        restart: always
+        depends_on:
+            - sprachtool-backend

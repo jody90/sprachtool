@@ -1,0 +1,12 @@
+<button class="btn btn-success" (click)="compareVersions(ownVersion._id, selectedVersion.value)">
+    <span class="glyphicon glyphicon-random"></span>
+</button>
+
+<select class="form-control version-select" #selectedVersion (change)="0">
+    <ng-container *ngFor="let version of versions">
+        {{ownVersion._id != version._id}}
+        <option [value]="version._id"  *ngIf="ownVersion._id != version._id">
+            {{version.title}}
+        </option>
+    </ng-container>
+</select>

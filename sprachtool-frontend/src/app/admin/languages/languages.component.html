@@ -1,0 +1,16 @@
+<div class="col-xs-3 translation-languages-container">
+    <div class="form-group">
+        <label for="addLanguage">Sprachkürzel*</label>
+        <input type="text" class="form-control" placeholder="Sprachkürzel" #lang (keyup)="0" (keyup.enter)="addLanguage(lang.value)" id="addLanguage" name="addLanguage">
+    </div>
+    <button type="button" class="btn btn-success btn-block" (click)="addLanguage(lang.value)">
+        <span aria-hidden="true" class="glyphicon glyphicon-plus"></span>
+        Sprachkürzel hinzufügen
+    </button>
+    <ul class="padding-0 margin-top-xl">
+        <li *ngFor="let language of languages" class="language-list-item">
+            {{language}}
+            <span class="glyphicon glyphicon-remove language-remove" aria-hidden="true"></span>
+        </li>
+    </ul>
+</div>

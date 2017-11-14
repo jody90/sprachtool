@@ -1,0 +1,12 @@
+@import "src/assets/_variables";
+
+.version-new-container {
+    margin-left: 0;
+    margin-right: 0;
+    background: $container-background;
+    padding: $base-padding;
+
+    & h3 {
+        margin-top: 0;
+    }
+}

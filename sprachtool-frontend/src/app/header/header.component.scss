@@ -1,0 +1,26 @@
+.environment-indicator {
+    color: #FF0000;
+    font-size: 36px;
+    padding: 0px;
+    margin: 0;
+    box-sizing: border-box;
+    animation-name: pulse;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease;
+    padding: 0 20px;
+
+    & strong {
+        font-weight: bolder;
+    }
+}
+
+@keyframes pulse {
+    from {
+        padding: 0 45px;
+    }
+    to {
+        padding: 0 5px; 
+    }
+}

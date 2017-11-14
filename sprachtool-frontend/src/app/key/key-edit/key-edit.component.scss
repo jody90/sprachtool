@@ -1,0 +1,57 @@
+@import "src/assets/_variables";
+
+.key-edit-container {
+    background: $container-background;
+    padding: $base-padding;
+
+    & .key-edit-form {
+
+        & .translation-form-group {
+            min-height: 105px;
+        }
+
+        & .need-update {
+            background-color: rgba(225, 41, 9, 0.3);
+            color: #ffffff;          
+        }
+
+        & .key-edit-remove-translation {
+            color: #D71F1A;
+            cursor: pointer;
+            font-size: 16px;
+            margin-left: 10px;
+            vertical-align: text-bottom;
+        }
+
+        & .key-edit-check-translation {
+            color: #2FB311;
+            cursor: pointer;
+            font-size: 20px;
+            margin-left: 10px;
+            vertical-align: text-bottom;
+        }
+
+        & .key-edit-save-btn {
+            float: right;
+            min-width: 250px;
+        }
+
+        & .add-language-btn {
+            margin-top: 25px;
+        }
+
+        & .key-edit-select-language {
+            margin-top: 25px;
+        }
+
+        & .possible-languages-container {
+            padding-right: 25px;
+        }
+
+        & .add-language-btn-container {
+            padding-right: 50px;
+        }
+
+    }
+
+}
